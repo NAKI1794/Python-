@@ -1,0 +1,33 @@
+import time
+import random
+
+#簡単なタイピングゲームの作成
+
+#出題単語を設定する
+words = ["hello", "apple", "python", "programming", "world", "code", "developer", "challenge"]
+i = 0
+
+print("タイピングゲーム")
+print("Press Enter to start...")
+input()
+
+#wordsの単語数分だけゲームを繰り返す
+while i <= len(words):
+    word = random.choice(words)
+    print(f"Type the word: {word}")
+
+    start_time = time.time()
+    user_input = input()
+    end_time = time.time()
+
+    if user_input == word:
+        print("Correct!")
+        i += 1
+    else:
+        print("Incorrect!")
+        i += 1
+    print(f"Time taken: {end_time - start_time:.2f} seconds")
+
+#wordsの単語数を超えた時はゲーム終了
+if i > len(words):
+    print("ゲーム終了！")

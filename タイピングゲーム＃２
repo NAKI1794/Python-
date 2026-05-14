@@ -1,0 +1,40 @@
+import time
+import random
+from colorama import Fore, Style, init
+
+#簡単なタイピングゲームの作成
+
+# colorama 初期化（Windows でも色が出るようにする）
+init(autoreset = True)
+
+#出題単語を設定する
+words = ["hello", "apple", "python", "programming", "world", "code", "developer", "challenge"]
+i = 0
+
+print("タイピングゲーム")
+print("Press Enter to start...")
+input()
+
+#wordsの単語数分だけゲームを繰り返す
+while i <= len(words):
+    word = random.choice(words)
+    print(f"Type the word: {word}")
+
+    start_time = time.time()
+    user_input = input()
+    end_time = time.time()
+
+    if user_input == word:
+        print(Fore.RED + "Correct!")
+        i += 1
+    else:
+        print(Fore.BLUE + "Incorrect!")
+        i += 1
+    print(Fore.GREEN + f"Time taken: {end_time - start_time:.2f} seconds")
+
+    #出題された単語をwordsから削除する
+    words.remove(word)
+
+#wordsの単語数を超えた時はゲーム終了
+if i > len(words):
+    print("ゲーム終了！")
